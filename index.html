@@ -3,103 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f7f1e7">
+  <meta name="theme-color" content="#f8f4ec">
   <meta name="description" content="深圳、广州、香港旅行同行共享行程与预算。">
-  <title>Little Trip · Travel Companion</title>
+  <title>China Trip 2026 · Travel Buddy</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="app-shell">
     <aside class="sidebar">
-      <a class="brand" href="#" aria-label="Little Trip 首页"><span class="brand-mark">✿</span><span>little trip<small>TRAVEL COMPANION</small></span></a>
-      <div class="trip-mini">
-        <div class="trip-cover">🍮</div>
-        <div><strong>Greater Bay Getaway</strong><small>25 Oct — 2 Nov 2026</small></div>
-      </div>
-      <p class="nav-label">YOUR TRIP</p>
+      <a class="brand" href="#" aria-label="Travel Buddy 首页"><img class="brand-logo" src="assets/images/logo.png" alt="Travel Buddy logo"><span>Travel Buddy</span></a>
+      <p class="nav-label">P人友好旅游计划 ฅ՞•ﻌ•՞ฅ</p>
       <nav class="nav">
-        <button class="nav-btn active" data-view="itinerary"><span>▦</span> 每日行程</button>
-        <button class="nav-btn" data-view="transport"><span>↗</span> 交通指南</button>
-        <button class="nav-btn" data-view="budget"><span>￥</span> 旅行预算</button>
-        <button class="nav-btn" data-view="food"><span>♡</span> 美食 & 收藏</button>
+        <button class="nav-btn active" data-view="itinerary"><img class="nav-image" src="assets/images/每日行程.png" alt=""> <span>每日行程</span></button>
+        <button class="nav-btn" data-view="budget"><img class="nav-image" src="assets/images/旅行预算.png" alt=""> <span>旅行花费</span></button>
+        <button class="nav-btn" data-view="food"><img class="nav-image" src="assets/images/美食&收藏.png" alt=""> <span>美食 & 收藏</span></button>
       </nav>
       <div class="sidebar-bottom">
-        <div class="sync-pill"><span class="sync-dot"></span><span id="sync-status">本机预览模式</span></div>
-        <button class="text-btn" id="share-help">ⓘ 如何与朋友共享</button>
-      </div>
+</div>
     </aside>
 
     <main class="main">
       <header class="topbar">
-        <div class="mobile-brand">✿ little trip</div>
-        <div class="topbar-right"><span class="avatar-stack"><i>🧋</i><i>🐻</i><i>🐰</i></span><span class="muted small">旅行小分队</span><button class="icon-btn" id="export-btn" title="导出行程 JSON">↥</button></div>
+        <div class="mobile-brand">Travel Buddy</div>
+        <div class="topbar-right"><button class="lang-toggle" id="language-toggle" type="button">中文 / EN</button></div>
       </header>
 
-      <section class="welcome">
-        <div>
-          <p class="eyebrow">YOUR LITTLE ESCAPE · 2026</p>
-          <h1>下一站，去哪里？ <span>✈️</span></h1>
-          <p class="welcome-sub">把路线、花费和想吃的都放在一起。慢慢玩，好好记住。</p>
-        </div>
-        <div class="hero-sticker">☁️ <span>好好旅行<br>不赶路</span> 🌼</div>
-      </section>
-
-      <section class="stats-grid">
-        <article class="stat-card"><div class="stat-icon peach">🗓️</div><div><span>旅行天数</span><strong>9 <small>days</small></strong></div></article>
-        <article class="stat-card"><div class="stat-icon mint">📍</div><div><span>目的地</span><strong>3 <small>cities + HK</small></strong></div></article>
-        <article class="stat-card"><div class="stat-icon lilac">💰</div><div><span>已记录花费</span><strong id="spent-stat">RM 0.00</strong></div></article>
-        <article class="stat-card"><div class="stat-icon yellow">🧸</div><div><span>一起旅行</span><strong>3 <small>friends</small></strong></div></article>
-      </section>
 
       <div id="view-itinerary" class="view active">
-        <div class="section-heading"><div><p class="eyebrow">PLAN YOUR DAY</p><h2>每日行程 <span class="heading-emoji">🌷</span></h2></div><button class="primary-btn" id="add-stop-btn">＋ 添加行程</button></div>
+        <div class="section-heading"><div><p class="eyebrow">MY TRAVEL JOURNAL</p><h2 class="page-title"><img class="page-title-image" src="assets/images/每日行程.png" alt="每日行程">每日行程</h2></div><button class="primary-btn" id="add-stop-btn">＋ 添加行程</button></div>
         <div class="day-strip" id="day-strip" aria-label="选择日期"></div>
         <div class="day-summary" id="day-summary"></div>
         <div class="itinerary-layout">
           <div class="timeline-panel">
-            <div class="panel-top"><div><h3 id="selected-date-title">10月25日 · 星期日</h3><p id="selected-city">深圳 · Arrival day</p></div><span class="weather-chip">🧋 Slow travel</span></div>
+            <div class="panel-top"><div><h3 id="selected-date-title">10月25日 · 星期日</h3><p id="selected-city">深圳 · 抵达日</p></div></div>
             <div id="timeline" class="timeline"></div>
           </div>
-          <aside class="side-notes">
-            <div class="note-card cream-card"><span class="note-emoji">🧡</span><h3>今日小提醒</h3><p id="day-note">先入住、放好行李，再轻松探索附近。</p></div>
-            <div class="note-card"><h3>旅行清单 <span>✨</span></h3><label class="check-row"><input type="checkbox" data-check="passport"> 护照 / 证件</label><label class="check-row"><input type="checkbox" data-check="data"> 网络 / eSIM</label><label class="check-row"><input type="checkbox" data-check="tickets"> 车票和门票</label><label class="check-row"><input type="checkbox" data-check="charger"> 充电器 / 充电宝</label><p class="tiny muted">勾选状态保存在当前浏览器。</p></div>
-          </aside>
+
         </div>
       </div>
 
-      <div id="view-transport" class="view">
-        <div class="section-heading"><div><p class="eyebrow">GETTING AROUND</p><h2>交通指南 <span>🚄</span></h2></div></div>
-        <div class="notice"><strong>出发前再核对一次：</strong>车次、口岸开放时间、地铁末班车和实际交通时间可能变化。以下是你的攻略整理，不是实时交通数据。</div>
-        <div id="transport-list" class="transport-list"></div>
-      </div>
-
       <div id="view-budget" class="view">
-        <div class="section-heading"><div><p class="eyebrow">SPEND SMART, HAVE FUN</p><h2>旅行预算 <span>💸</span></h2></div><button class="primary-btn" id="add-expense-btn">＋ 记录花费</button></div>
-        <div class="budget-hero"><div><p>目前记录的支出</p><h2 id="budget-total">RM 0.00</h2><span>目标预算：RM 3,500 / 人（可自行调整）</span></div><div class="budget-doodle">🐷<br><small>旅行存钱罐</small></div></div>
-        <div class="budget-grid"><div class="panel"><h3>支出分类</h3><div id="category-bars" class="category-bars"></div></div><div class="panel"><h3>新增一笔花费</h3><form id="expense-form" class="form-stack"><label>项目名称<input id="expense-name" required placeholder="例如：地铁 / 午餐"></label><div class="form-row"><label>金额（RM）<input id="expense-amount" type="number" min="0.01" step="0.01" required placeholder="12.50"></label><label>分类<select id="expense-category"><option>交通</option><option>美食</option><option>门票</option><option>住宿</option><option>购物</option><option>其他</option></select></label></div><label>由谁付款<input id="expense-payer" placeholder="例如：我"></label><button class="primary-btn" type="submit">保存花费</button></form></div></div>
+        <div class="section-heading"><div><p class="eyebrow">SPEND SMART, HAVE FUN</p><h2 class="page-title"><img class="page-title-image" src="assets/images/旅行预算.png" alt="旅行花费">旅行花费</h2></div><button class="primary-btn" id="add-expense-btn">＋ 记录花费</button></div>
+        
+        <div class="budget-grid"><div class="panel expense-breakdown-panel"><div class="expense-filter-head"><div class="expense-filter-controls"><label class="expense-filter-label">日期<select id="expense-date-filter"><option value="all">全部日期</option></select></label><label class="expense-currency-label">进度条货币<select id="expense-currency-filter"><option value="all">全部货币（统一换算）</option><option value="RM">RM · 马币支出</option><option value="RMB">RMB · 人民币支出</option></select></label></div></div><div class="expense-total-strip expense-total-simple"><div><span id="filtered-total-label">总花费</span><div class="total-currency-pair"><strong id="filtered-total-rm">RM 0.00</strong><strong id="filtered-total-rmb">RMB 0.00</strong></div><small id="filtered-total-detail">两种货币自动换算后的总花费</small></div></div><p id="exchange-rate-note" class="exchange-rate-note">正在获取最新公开汇率…</p><h4 class="category-subheading">支出类别</h4><div id="category-bars" class="category-bars"></div></div><div class="panel"><h3>新增一笔花费</h3><form id="expense-form" class="form-stack"><label>项目名称<input id="expense-name" required placeholder="例如：地铁 / 午餐"></label><div class="form-row"><label>金额<input id="expense-amount" type="number" min="0.01" step="0.01" required placeholder="12.50"></label><label>货币<select id="expense-currency"><option value="RM">RM · 马币</option><option value="RMB">RMB · 人民币</option></select></label></div><div class="form-row"><label>分类<select id="expense-category"><option>交通</option><option>美食</option><option>门票</option><option>住宿</option><option>购物</option><option>其他</option></select></label></div><label>由谁付款<input id="expense-payer" placeholder="例如：我"></label><button class="primary-btn" type="submit">保存花费</button></form></div></div>
         <div class="panel expenses-panel"><h3>最近记录</h3><div id="expense-list"></div></div>
       </div>
 
       <div id="view-food" class="view">
-        <div class="section-heading"><div><p class="eyebrow">TASTE THE CITY</p><h2>美食 & 收藏 <span>🥢</span></h2></div><button class="primary-btn" id="add-food-btn">＋ 添加收藏</button></div>
-        <div class="filter-row"><button class="filter-chip active" data-food-filter="全部">全部</button><button class="filter-chip" data-food-filter="深圳">深圳</button><button class="filter-chip" data-food-filter="广州">广州</button><button class="filter-chip" data-food-filter="香港">香港</button><button class="filter-chip" data-food-filter="珠海">珠海</button></div>
+        <div class="section-heading"><div><p class="eyebrow">TASTE THE CITY</p><h2 class="page-title"><img class="page-title-image" src="assets/images/美食&收藏.png" alt="美食与收藏">美食 & 收藏</h2></div><button class="primary-btn" id="add-food-btn">＋ 添加收藏</button></div>
+        <div class="filter-row"><button class="filter-chip active" data-food-filter="全部">全部</button><button class="filter-chip" data-food-filter="深圳">深圳</button><button class="filter-chip" data-food-filter="广州">广州</button><button class="filter-chip" data-food-filter="香港">香港</button></div>
         <div id="food-grid" class="food-grid"></div>
       </div>
 
-      <footer class="footer">Made with ☁️ & lots of snacks · Little Trip 2026 <span>Keep this trip close.</span></footer>
+      <footer class="footer">Made with ☁️ & lots of snacks · China Trip 2026 <span>把旅行的小快乐收藏起来 ♡ · <span id="cloud-status">正在检查云端连接…</span></span></footer>
     </main>
   </div>
 
-  <dialog id="stop-dialog" class="modal"><form id="stop-form" method="dialog"><div class="modal-heading"><div><p class="eyebrow">MAKE A LITTLE PLAN</p><h2>添加行程 ✨</h2></div><button type="button" class="close-btn" data-close="stop-dialog">×</button></div><label>日期<select id="stop-date"></select></label><div class="form-row"><label>时间<input id="stop-time" type="time" value="10:00" required></label><label>城市<select id="stop-city"><option>深圳</option><option>广州</option><option>香港</option><option>珠海</option></select></label></div><label>地点名称<input id="stop-name" required placeholder="例如：当地美食 / 景点"></label><label>区域 / 备注<input id="stop-area" placeholder="例如：福田 · 提前购票"></label><label>交通方式<input id="stop-transport" placeholder="地铁 / 步行 / 高铁"></label><label>预计时间<input id="stop-duration" placeholder="约 30 分钟"></label><button class="primary-btn full-btn" type="submit">添加到行程</button></form></dialog>
+  <dialog id="stop-dialog" class="modal"><form id="stop-form" method="dialog"><div class="modal-heading"><div><p class="eyebrow">MAKE A LITTLE PLAN</p><h2>添加行程 ✨</h2></div><button type="button" class="close-btn" data-close="stop-dialog">×</button></div><label>日期<select id="stop-date"></select></label><div class="form-row"><label>时间<input id="stop-time" type="time" value="10:00" required></label><label>城市<select id="stop-city"><option>深圳</option><option>广州</option><option>香港</option></select></label></div><label>地点名称<input id="stop-name" required placeholder="例如：当地美食 / 景点"></label><label>区域 / 备注<input id="stop-area" placeholder="例如：福田 · 提前购票"></label><label>交通方式<input id="stop-transport" placeholder="地铁 / 步行 / 高铁"></label><label>预计时间<input id="stop-duration" placeholder="约 30 分钟"></label><button class="primary-btn full-btn" type="submit">添加到行程</button></form></dialog>
 
-  <dialog id="food-dialog" class="modal"><form id="food-form" method="dialog"><div class="modal-heading"><div><p class="eyebrow">SAVE FOR LATER</p><h2>添加收藏 🍜</h2></div><button type="button" class="close-btn" data-close="food-dialog">×</button></div><label>名称<input id="food-name" required placeholder="餐厅 / 小吃 / 景点"></label><div class="form-row"><label>城市<select id="food-city"><option>深圳</option><option>广州</option><option>香港</option><option>珠海</option></select></label><label>类型<select id="food-type"><option>美食</option><option>景点</option><option>购物</option><option>其他</option></select></label></div><label>地址 / 备注<input id="food-address" placeholder="地铁站、街道或想吃的菜"></label><button class="primary-btn full-btn" type="submit">保存收藏</button></form></dialog>
+  <dialog id="food-dialog" class="modal"><form id="food-form" method="dialog"><div class="modal-heading"><div><p class="eyebrow">SAVE FOR LATER</p><h2>添加收藏 🍜</h2></div><button type="button" class="close-btn" data-close="food-dialog">×</button></div><label>名称<input id="food-name" required placeholder="餐厅 / 小吃 / 景点"></label><div class="form-row"><label>城市<select id="food-city"><option>深圳</option><option>广州</option><option>香港</option></select></label><label>类型<select id="food-type"><option>美食</option><option>景点</option><option>购物</option><option>其他</option></select></label></div><label>地址 / 备注<input id="food-address" placeholder="地铁站、街道或想吃的菜"></label><button class="primary-btn full-btn" type="submit">保存收藏</button></form></dialog>
 
-  <dialog id="share-dialog" class="modal"><div class="modal-heading"><div><p class="eyebrow">TRAVEL TOGETHER</p><h2>怎样和朋友共享？ 🫶</h2></div><button class="close-btn" data-close="share-dialog">×</button></div><p>目前这份代码开箱即用，但资料默认保存在当前浏览器。若要所有朋友真正同步，需要创建 Supabase 项目并填写配置。</p><ol class="help-list"><li>先部署网站，让所有人都能打开同一个网址。</li><li>按照项目内 README 的步骤建立 Supabase 数据表。</li><li>把 Project URL 和 anon/publishable key 填入 <code>js/config.js</code>。</li><li>重新部署后，行程、花费和收藏就可以在已配置的设备间同步。</li></ol><p class="notice">不要把 service_role key 放进前端。中国大陆访问海外托管及数据库的稳定性不能保证，请出发前实测。</p><button class="primary-btn full-btn" data-close="share-dialog">知道了</button></dialog>
-
-  <dialog id="export-dialog" class="modal"><div class="modal-heading"><h2>导出备份</h2><button class="close-btn" data-close="export-dialog">×</button></div><p>导出行程和当前本机保存的数据，方便备份或转移。</p><button id="download-json" class="primary-btn full-btn">下载 JSON 备份</button></dialog>
+  <dialog id="edit-dialog" class="modal"><form id="edit-form" method="dialog"><div class="modal-heading"><div><p class="eyebrow">MAKE IT YOURS</p><h2 id="edit-dialog-title">编辑内容 ✎</h2></div><button type="button" class="close-btn" data-close="edit-dialog">×</button></div><div id="edit-fields" class="form-stack"></div><button class="primary-btn full-btn" type="submit">保存修改</button></form></dialog>
   <div id="toast" class="toast" role="status"></div>
-<script src="./config.js"></script>
-<script src="./data.js"></script>
-<script src="./app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
