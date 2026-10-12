@@ -1,0 +1,74 @@
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f4ec">
+  <meta name="description" content="深圳、广州、香港旅行同行共享行程与预算。">
+  <title>China Trip 2026 · Travel Buddy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Travel Buddy 首页"><img class="brand-logo" src="logo.png" alt="Travel Buddy logo"><span>Travel Buddy</span></a>
+      <p class="nav-label">P人友好旅游计划 ฅ՞•ﻌ•՞ฅ</p>
+      <nav class="nav">
+        <button class="nav-btn active" data-view="itinerary"><img class="nav-image" src="每日行程.png" alt=""> <span>每日行程</span></button>
+        <button class="nav-btn" data-view="budget"><img class="nav-image" src="旅行预算.png" alt=""> <span>旅行花费</span></button>
+        <button class="nav-btn" data-view="food"><img class="nav-image" src="美食&收藏.png" alt=""> <span>美食 & 收藏</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+</div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="mobile-brand">Travel Buddy</div>
+        <div class="topbar-right"><button class="lang-toggle" id="language-toggle" type="button">中文 / EN</button></div>
+      </header>
+
+
+      <div id="view-itinerary" class="view active">
+        <div class="section-heading"><div><p class="eyebrow">MY TRAVEL JOURNAL</p><h2 class="page-title"><img class="page-title-image" src="每日行程.png" alt="每日行程">每日行程</h2></div><button class="primary-btn" id="add-stop-btn">＋ 添加行程</button></div>
+        <div class="day-strip" id="day-strip" aria-label="选择日期"></div>
+        <div class="day-summary" id="day-summary"></div>
+        <div class="itinerary-layout">
+          <div class="timeline-panel">
+            <div class="panel-top"><div><h3 id="selected-date-title">10月25日 · 星期日</h3><p id="selected-city">深圳 · 抵达日</p></div></div>
+            <div id="timeline" class="timeline"></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="view-budget" class="view">
+        <div class="section-heading"><div><p class="eyebrow">SPEND SMART, HAVE FUN</p><h2 class="page-title"><img class="page-title-image" src="旅行预算.png" alt="旅行花费">旅行花费</h2></div><button class="primary-btn" id="add-expense-btn">＋ 记录花费</button></div>
+        
+        <div class="budget-grid"><div class="panel expense-breakdown-panel"><div class="expense-filter-head"><div class="expense-filter-controls"><label class="expense-filter-label">日期<select id="expense-date-filter"><option value="all">全部日期</option></select></label><label class="expense-currency-label">进度条货币<select id="expense-currency-filter"><option value="all">全部货币（统一换算）</option><option value="RM">RM · 马币支出</option><option value="RMB">RMB · 人民币支出</option></select></label></div></div><div class="expense-total-strip expense-total-simple"><div><span id="filtered-total-label">总花费</span><div class="total-currency-pair"><strong id="filtered-total-rm">RM 0.00</strong><strong id="filtered-total-rmb">RMB 0.00</strong></div><small id="filtered-total-detail">两种货币自动换算后的总花费</small></div></div><p id="exchange-rate-note" class="exchange-rate-note">正在获取最新公开汇率…</p><h4 class="category-subheading">支出类别</h4><div id="category-bars" class="category-bars"></div></div><div class="panel"><h3>新增一笔花费</h3><form id="expense-form" class="form-stack"><label>项目名称<input id="expense-name" required placeholder="例如：地铁 / 午餐"></label><div class="form-row"><label>金额<input id="expense-amount" type="number" min="0.01" step="0.01" required placeholder="12.50"></label><label>货币<select id="expense-currency"><option value="RM">RM · 马币</option><option value="RMB">RMB · 人民币</option></select></label></div><div class="form-row"><label>分类<select id="expense-category"><option>交通</option><option>美食</option><option>门票</option><option>住宿</option><option>购物</option><option>其他</option></select></label></div><label>由谁付款<input id="expense-payer" placeholder="例如：我"></label><button class="primary-btn" type="submit">保存花费</button></form></div></div>
+        <div class="panel expenses-panel"><h3>最近记录</h3><div id="expense-list"></div></div>
+      </div>
+
+      <div id="view-food" class="view">
+        <div class="section-heading"><div><p class="eyebrow">TASTE THE CITY</p><h2 class="page-title"><img class="page-title-image" src="美食&收藏.png" alt="美食与收藏">美食 & 收藏</h2></div><button class="primary-btn" id="add-food-btn">＋ 添加收藏</button></div>
+        <div class="filter-row"><button class="filter-chip active" data-food-filter="全部">全部</button><button class="filter-chip" data-food-filter="深圳">深圳</button><button class="filter-chip" data-food-filter="广州">广州</button><button class="filter-chip" data-food-filter="香港">香港</button></div>
+        <div id="food-grid" class="food-grid"></div>
+      </div>
+
+      <footer class="footer">Made with ☁️ & lots of snacks · China Trip 2026 <span>把旅行的小快乐收藏起来 ♡ · <span id="cloud-status">正在检查云端连接…</span></span></footer>
+    </main>
+  </div>
+
+  <dialog id="stop-dialog" class="modal"><form id="stop-form" method="dialog"><div class="modal-heading"><div><p class="eyebrow">MAKE A LITTLE PLAN</p><h2>添加行程 ✨</h2></div><button type="button" class="close-btn" data-close="stop-dialog">×</button></div><label>日期<select id="stop-date"></select></label><div class="form-row"><label>时间<input id="stop-time" type="time" value="10:00" required></label><label>城市<select id="stop-city"><option>深圳</option><option>广州</option><option>香港</option></select></label></div><label>地点名称<input id="stop-name" required placeholder="例如：当地美食 / 景点"></label><label>区域 / 备注<input id="stop-area" placeholder="例如：福田 · 提前购票"></label><label>交通方式<input id="stop-transport" placeholder="地铁 / 步行 / 高铁"></label><label>预计时间<input id="stop-duration" placeholder="约 30 分钟"></label><button class="primary-btn full-btn" type="submit">添加到行程</button></form></dialog>
+
+  <dialog id="food-dialog" class="modal"><form id="food-form" method="dialog"><div class="modal-heading"><div><p class="eyebrow">SAVE FOR LATER</p><h2>添加收藏 🍜</h2></div><button type="button" class="close-btn" data-close="food-dialog">×</button></div><label>名称<input id="food-name" required placeholder="餐厅 / 小吃 / 景点"></label><div class="form-row"><label>城市<select id="food-city"><option>深圳</option><option>广州</option><option>香港</option></select></label><label>类型<select id="food-type"><option>美食</option><option>景点</option><option>购物</option><option>其他</option></select></label></div><label>地址 / 备注<input id="food-address" placeholder="地铁站、街道或想吃的菜"></label><button class="primary-btn full-btn" type="submit">保存收藏</button></form></dialog>
+
+  <dialog id="edit-dialog" class="modal"><form id="edit-form" method="dialog"><div class="modal-heading"><div><p class="eyebrow">MAKE IT YOURS</p><h2 id="edit-dialog-title">编辑内容 ✎</h2></div><button type="button" class="close-btn" data-close="edit-dialog">×</button></div><div id="edit-fields" class="form-stack"></div><button class="primary-btn full-btn" type="submit">保存修改</button></form></dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
