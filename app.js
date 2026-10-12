@@ -230,7 +230,16 @@
       if(note)note.textContent=`暂时无法获取最新汇率，暂用参考汇率 RM 1 ≈ RMB ${FALLBACK_MYR_TO_CNY.toFixed(2)}。联网后会自动尝试更新；换算金额仅供参考。`;
     }
   }
-  function foodImageForType(type){const files={"美食":"美食.png","景点":"景点.png","购物":"购物.png","其他":"其他.png"};return `assets/images/${files[type]||files["其他"]}`;}
+  function foodImageForType(type){
+  const files = {
+    "美食": "美食.png",
+    "景点": "景点.png",
+    "购物": "购物.png",
+    "其他": "其他.png"
+  };
+
+  return files[type] || files["其他"];
+}
   function renderFood(){const foods=state.foods.map((f,i)=>({...f,_index:i})).filter(f=>foodFilter==="全部"||f.city===foodFilter);const typeClass={"美食":"food-type-food","景点":"food-type-attraction","购物":"food-type-shopping","其他":"food-type-other"};$("#food-grid").innerHTML=foods.length?foods.map(f=>`<article class="food-card ${typeClass[f.type]||typeClass["其他"]}"><div class="food-art"><img src="${foodImageForType(f.type)}" alt="${esc(f.type||"其他")}" loading="lazy"></div><h3>${esc(f.name)}</h3><p>${esc(f.address||"地址待补充")}<br>${esc(f.note||"")}</p><div class="food-bottom"><span class="food-tag">${esc(f.city)} · ${esc(f.type)}</span><div class="card-actions"><button class="mini-btn" data-edit-food="${f._index}">${tr("edit")}</button><button class="delete-btn" data-delete-food="${f._index}" title="删除收藏">×</button></div></div></article>`).join(""):`<div class="empty-state">${tr("noFoods")}</div>`}
   function renderAll(){renderDayStrip();renderTimeline();renderBudget();renderFood();applyLanguageLabels()}
   function showView(name){$$(".view").forEach(v=>v.classList.toggle("active",v.id===`view-${name}`));$$(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.view===name));window.scrollTo({top:0,behavior:"smooth"})}
