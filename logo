@@ -11,7 +11,7 @@
 <body>
   <div class="app-shell">
     <aside class="sidebar">
-      <a class="brand" href="#" aria-label="Travel Buddy 首页"><img class="brand-logo" src="/logo.png" alt="Travel Buddy logo"><span>Travel Buddy</span></a>
+      <a class="brand" href="#" aria-label="Travel Buddy 首页"><img class="brand-logo" src="assets/images/logo.png" alt="Travel Buddy logo"><span>Travel Buddy</span></a>
       <p class="nav-label">P人友好旅游计划 ฅ՞•ﻌ•՞ฅ</p>
       <nav class="nav">
         <button class="nav-btn active" data-view="itinerary"><img class="nav-image" src="assets/images/每日行程.png" alt=""> <span>每日行程</span></button>
